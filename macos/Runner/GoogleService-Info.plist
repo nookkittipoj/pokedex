@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyAbKsB0sNftrfYIebUh0VMVSEJ6C0DxIqk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>578787971708</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.pokedexCleanArchitecture</string>
+	<key>PROJECT_ID</key>
+	<string>pokedex-d058d</string>
+	<key>STORAGE_BUCKET</key>
+	<string>pokedex-d058d.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:578787971708:ios:5ea9f175d1bdb67ff2aff9</string>
+</dict>
+</plist>

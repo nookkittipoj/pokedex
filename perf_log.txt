@@ -1,0 +1,44 @@
+
+00:00 +0: loading /Users/kittipojsroifar/Documents/sandbox/pokedex_clean_architecture/integration_test/perf_test.dart                                                                                  
+00:01 +0: loading /Users/kittipojsroifar/Documents/sandbox/pokedex_clean_architecture/integration_test/perf_test.dart                                                                                  Warning: Missing build name (CFBundleShortVersionString).
+Warning: Missing build number (CFBundleVersion).
+
+00:02 +0: loading /Users/kittipojsroifar/Documents/sandbox/pokedex_clean_architecture/integration_test/perf_test.dart                                                                                  Running Xcode build...                                          
+00:03 +0: loading /Users/kittipojsroifar/Documents/sandbox/pokedex_clean_architecture/integration_test/perf_test.dart                                                                                  
+00:04 +0: loading /Users/kittipojsroifar/Documents/sandbox/pokedex_clean_architecture/integration_test/perf_test.dart                                                                                  
+00:05 +0: loading /Users/kittipojsroifar/Documents/sandbox/pokedex_clean_architecture/integration_test/perf_test.dart                                                                                  
+00:06 +0: loading /Users/kittipojsroifar/Documents/sandbox/pokedex_clean_architecture/integration_test/perf_test.dart                                                                                  
+00:07 +0: loading /Users/kittipojsroifar/Documents/sandbox/pokedex_clean_architecture/integration_test/perf_test.dart                                                                                  
+00:08 +0: loading /Users/kittipojsroifar/Documents/sandbox/pokedex_clean_architecture/integration_test/perf_test.dart                                                                                  
+00:09 +0: loading /Users/kittipojsroifar/Documents/sandbox/pokedex_clean_architecture/integration_test/perf_test.dart                                                                                  
+00:10 +0: loading /Users/kittipojsroifar/Documents/sandbox/pokedex_clean_architecture/integration_test/perf_test.dart                                                                                  
+00:11 +0: loading /Users/kittipojsroifar/Documents/sandbox/pokedex_clean_architecture/integration_test/perf_test.dart                                                                                  
+00:12 +0: loading /Users/kittipojsroifar/Documents/sandbox/pokedex_clean_architecture/integration_test/perf_test.dart                                                                                  
+00:13 +0: loading /Users/kittipojsroifar/Documents/sandbox/pokedex_clean_architecture/integration_test/perf_test.dart                                                                                  
+ └─Compiling, linking and signing...                     
+00:14 +0: loading /Users/kittipojsroifar/Documents/sandbox/pokedex_clean_architecture/integration_test/perf_test.dart                                                                                  
+00:15 +0: loading /Users/kittipojsroifar/Documents/sandbox/pokedex_clean_architecture/integration_test/perf_test.dart                                                                                   2,253ms
+Xcode build done.                                           13.0s
+
+00:16 +0: loading /Users/kittipojsroifar/Documents/sandbox/pokedex_clean_architecture/integration_test/perf_test.dart                                                                                  
+00:17 +0: loading /Users/kittipojsroifar/Documents/sandbox/pokedex_clean_architecture/integration_test/perf_test.dart                                                                                  
+00:18 +0: loading /Users/kittipojsroifar/Documents/sandbox/pokedex_clean_architecture/integration_test/perf_test.dart                                                                                  
+00:19 +0: loading /Users/kittipojsroifar/Documents/sandbox/pokedex_clean_architecture/integration_test/perf_test.dart                                                                                  
+00:20 +0: loading /Users/kittipojsroifar/Documents/sandbox/pokedex_clean_architecture/integration_test/perf_test.dart                                                                                  
+00:21 +0: loading /Users/kittipojsroifar/Documents/sandbox/pokedex_clean_architecture/integration_test/perf_test.dart                                                                                  
+00:22 +0: loading /Users/kittipojsroifar/Documents/sandbox/pokedex_clean_architecture/integration_test/perf_test.dart                                                                                  
+00:22 +0: Startup Performance Test                                                                                                                                                                     
+00:23 +0: Startup Performance Test                                                                                                                                                                     
+00:24 +0: Startup Performance Test                                                                                                                                                                     
+00:25 +0: Startup Performance Test                                                                                                                                                                     
+00:25 +0: Startup Performance Test                                                                                                                                                                     
+App Startup Time: 2867ms
+✅ Startup performance written to: /Users/kittipojsroifar/Library/Developer/CoreSimulator/Devices/9B7364E1-1AFD-4AF5-BFE1-B558DCBD6BD4/data/Containers/Data/Application/A3534892-86DC-4B2A-B003-9D6A5618122B/tmp/perf_logs_IIiLcv/startup_perf_report.json
+✅ Timeline report written to build/startup_perf_report.json
+🟢 Average frame build timnull e: ms
+🟢 Average raster time: null ms
+
+00:25 +1: Startup Performance Test                                                                                                                                                                     
+00:25 +1: (tearDownAll)                                                                                                                                                                                
+00:26 +1: (tearDownAll)                                                                                                                                                                                
+00:26 +1: All tests passed!                                                                                                                                                                            
