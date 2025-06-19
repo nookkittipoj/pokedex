@@ -28,6 +28,7 @@ class MyApp extends ConsumerWidget {
     final dio = Dio()
       ..interceptors.add(FirebasePerformanceInterceptor())
       ..interceptors.add(GlobalLoadingInterceptor(ref));
+    final RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
     final remoteDataSource = PokemonRemoteDataSourceImpl(dio);
     final repository = PokemonRepositoryImpl(remoteDataSource);
 
@@ -35,6 +36,7 @@ class MyApp extends ConsumerWidget {
     final getPokemonDetail = GetPokemonDetail(repository);
 
     return MaterialApp(
+      navigatorObservers: [routeObserver],
       // showPerformanceOverlay: true,
       debugShowCheckedModeBanner: false,
       title: 'Pokedex',

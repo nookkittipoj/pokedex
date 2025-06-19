@@ -1,6 +1,8 @@
 import 'package:firebase_performance/firebase_performance.dart';
 import 'package:flutter/material.dart';
 import 'package:pokedex_clean_architecture/domain/usecases/get_pokemon_detail.dart';
+import 'package:pokedex_clean_architecture/presentation/pages/pokemon_detail_page.dart';
+import 'package:pokedex_clean_architecture/presentation/utils/screen_trace_observer.dart';
 import 'package:pokedex_clean_architecture/presentation/widgets/pokeball_loader.dart';
 import '../../domain/entities/pokemon.dart';
 import '../../domain/usecases/get_pokemon_list.dart';
@@ -22,7 +24,6 @@ class PokemonListPage extends StatefulWidget {
 }
 
 class _PokemonListPageState extends State<PokemonListPage> {
-  Trace? _gridScreenTrace;
   List<Pokemon> pokemons = [];
   Pokemon? selectedPokemon;
   bool isLoading = true;
@@ -35,7 +36,6 @@ class _PokemonListPageState extends State<PokemonListPage> {
   @override
   void initState() {
     super.initState();
-    _startGridScreenTrace();
     loadInitialPokemons();
 
     _scrollController.addListener(() {
@@ -47,18 +47,8 @@ class _PokemonListPageState extends State<PokemonListPage> {
     });
   }
 
-  Future<void> _startGridScreenTrace() async {
-    _gridScreenTrace =
-        FirebasePerformance.instance.newTrace('screen_pokemon_grid');
-    await _gridScreenTrace?.start();
-    _gridScreenTrace?.setMetric('offset', offset);
-    _gridScreenTrace?.setMetric('limit', limit);
-    _gridScreenTrace?.setMetric('initial_pokemon_loaded', pokemons.length);
-  }
-
   @override
   void dispose() {
-    _gridScreenTrace?.stop();
     _scrollController.dispose();
     super.dispose();
   }
@@ -66,7 +56,6 @@ class _PokemonListPageState extends State<PokemonListPage> {
   Future<void> loadInitialPokemons() async {
     setState(() => isLoading = true);
     final list = await widget.getPokemonList(offset: offset, limit: limit);
-    _gridScreenTrace?.setMetric('first_batch_loaded', list.length);
     setState(() {
       pokemons = list;
       selectedPokemon = list.isNotEmpty ? list.first : null;
@@ -91,47 +80,38 @@ class _PokemonListPageState extends State<PokemonListPage> {
   void selectPokemon(Pokemon pokemon) async {
     setState(() => isLoadingSelect = true);
 
-    final trace = FirebasePerformance.instance
-        .newTrace('screen_pokemon_detail_${pokemon.name}');
-    await trace.start();
-
     final detail = await widget.getPokemonDetail(pokemon.name);
 
-    trace.setMetric('types_count', detail.types.length);
-    await trace.stop();
+    setState(() => isLoadingSelect = false);
 
-    setState(() {
-      selectedPokemon = detail;
-      isLoadingSelect = false;
-    });
+    if (!mounted) return;
+
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) => PokemonDetailPage(pokemon: detail),
+    ));
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Pokedex')),
-      body: isLoading
-          ? const Center(child: PokeballLoader())
-          : Column(
-              children: [
-                Expanded(
-                  flex: 1,
-                  child: PokemonDetailCard(
-                      pokemon: selectedPokemon,
-                      isLoadingSelect: isLoadingSelect),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: PokemonGrid(
-                    pokemons: pokemons,
-                    onTap: selectPokemon,
-                    scrollController: _scrollController,
-                    isLoadingMore: isLoadingMore,
-                    selectedPokemon: selectedPokemon,
-                  ),
-                ),
-              ],
-            ),
+    return ScreenTraceObserver(
+      traceName: 'screen_pokemon_grid',
+      initialMetrics: {
+        'offset': offset,
+        'limit': limit,
+        'initial_pokemon_loaded': pokemons.length,
+      },
+      child: Scaffold(
+        appBar: AppBar(title: const Text('Pokedex')),
+        body: isLoading
+            ? const Center(child: PokeballLoader())
+            : PokemonGrid(
+                pokemons: pokemons,
+                onTap: selectPokemon,
+                scrollController: _scrollController,
+                isLoadingMore: isLoadingMore,
+                selectedPokemon: selectedPokemon,
+              ),
+      ),
     );
   }
 }
