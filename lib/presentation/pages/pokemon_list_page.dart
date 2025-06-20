@@ -1,4 +1,3 @@
-import 'package:firebase_performance/firebase_performance.dart';
 import 'package:flutter/material.dart';
 import 'package:pokedex_clean_architecture/domain/usecases/get_pokemon_detail.dart';
 import 'package:pokedex_clean_architecture/presentation/pages/pokemon_detail_page.dart';
@@ -6,7 +5,6 @@ import 'package:pokedex_clean_architecture/presentation/utils/screen_trace_obser
 import 'package:pokedex_clean_architecture/presentation/widgets/pokeball_loader.dart';
 import '../../domain/entities/pokemon.dart';
 import '../../domain/usecases/get_pokemon_list.dart';
-import '../widgets/pokemon_detail_card.dart';
 import '../widgets/pokemon_grid.dart';
 
 class PokemonListPage extends StatefulWidget {

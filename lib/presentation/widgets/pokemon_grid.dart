@@ -51,7 +51,6 @@ class PokemonGrid extends StatelessWidget {
         }
 
         final pokemon = pokemons[index];
-        final isSelected = selectedPokemon?.id == pokemon.id;
 
         return GestureDetector(
           onTap: () => onTap(pokemon),
@@ -59,21 +58,18 @@ class PokemonGrid extends StatelessWidget {
             duration: const Duration(milliseconds: 250),
             curve: Curves.easeInOut,
             decoration: BoxDecoration(
-              color: isSelected ? Colors.lightBlue[50] : Colors.white,
+              color: Colors.white,
               borderRadius: BorderRadius.circular(12),
               boxShadow: const [
                 BoxShadow(color: Colors.black12, blurRadius: 6),
               ],
-              border: isSelected
-                  ? Border.all(color: Colors.lightBlueAccent, width: 1)
-                  : null,
             ),
             padding: const EdgeInsets.all(8),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Hero(
-                  tag: 'pokemon-front-${pokemon.id}',
+                  tag: 'pokemon-${pokemon.id}',
                   child: FadeInImage.assetNetwork(
                     placeholder: 'assets/animations/pokeball.gif',
                     image: pokemon.frontDefaultUrl,
