@@ -8,6 +8,8 @@ class Pokemon {
   final List<String> types;
   final int height;
   final int weight;
+  final List<String> abilities;
+  final Map<String, int> stats;
 
   Pokemon({
     required this.id,
@@ -19,5 +21,7 @@ class Pokemon {
     required this.types,
     required this.height,
     required this.weight,
+    required this.abilities,
+    required this.stats,
   });
 }

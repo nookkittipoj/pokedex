@@ -72,13 +72,15 @@ class PokemonGrid extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // Smooth image load
-                FadeInImage.assetNetwork(
-                  placeholder: 'assets/animations/pokeball.gif',
-                  image: pokemon.frontDefaultUrl,
-                  height: 60,
-                  fadeInDuration: const Duration(milliseconds: 200),
-                  fit: BoxFit.contain,
+                Hero(
+                  tag: 'pokemon-front-${pokemon.id}',
+                  child: FadeInImage.assetNetwork(
+                    placeholder: 'assets/animations/pokeball.gif',
+                    image: pokemon.frontDefaultUrl,
+                    height: 90,
+                    fadeInDuration: const Duration(milliseconds: 200),
+                    fit: BoxFit.contain,
+                  ),
                 ),
                 const SizedBox(height: 8),
                 Text(

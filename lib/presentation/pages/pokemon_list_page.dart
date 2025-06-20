@@ -86,8 +86,12 @@ class _PokemonListPageState extends State<PokemonListPage> {
 
     if (!mounted) return;
 
-    Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) => PokemonDetailPage(pokemon: detail),
+    Navigator.of(context).push(PageRouteBuilder(
+      transitionDuration: const Duration(milliseconds: 300),
+      pageBuilder: (_, animation, __) => FadeTransition(
+        opacity: animation,
+        child: PokemonDetailPage(pokemon: detail),
+      ),
     ));
   }
 

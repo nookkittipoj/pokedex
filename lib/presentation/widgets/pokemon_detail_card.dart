@@ -46,12 +46,13 @@ class PokemonDetailCard extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        FadeInImage.assetNetwork(
-                          placeholder: 'assets/animations/pokeball.gif',
-                          image: pokemon!.frontDefaultUrl,
-                          height: 90,
-                          fadeInDuration: const Duration(milliseconds: 200),
-                          fit: BoxFit.contain,
+                        Hero(
+                          tag: 'pokemon-front-${pokemon!.id}',
+                          child: FadeInImage.assetNetwork(
+                            placeholder: 'assets/animations/pokeball.gif',
+                            image: pokemon!.frontDefaultUrl,
+                            height: 90,
+                          ),
                         ),
                         const SizedBox(height: 4),
                         FadeInImage.assetNetwork(

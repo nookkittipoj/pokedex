@@ -40,7 +40,9 @@ class MyApp extends ConsumerWidget {
       // showPerformanceOverlay: true,
       debugShowCheckedModeBanner: false,
       title: 'Pokedex',
-      theme: ThemeData(primarySwatch: Colors.red),
+      theme: ThemeData(
+        useMaterial3: true,
+      ),
       home: Stack(
         children: [
           PokemonListPage(

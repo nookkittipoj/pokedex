@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_performance/firebase_performance.dart';
 import '../../domain/entities/pokemon.dart';
-import '../widgets/pokemon_detail_card.dart';
+import '../widgets/pokemon_main_info.dart';
+import '../widgets/pokemon_stats_chart.dart';
 
 class PokemonDetailPage extends StatefulWidget {
   final Pokemon pokemon;
@@ -14,13 +15,11 @@ class PokemonDetailPage extends StatefulWidget {
 
 class _PokemonDetailPageState extends State<PokemonDetailPage> {
   late Trace _trace;
-  bool _isLoadingSelect = true;
 
   @override
   void initState() {
     super.initState();
     _startPerformanceTrace();
-    _simulateLoad();
   }
 
   Future<void> _startPerformanceTrace() async {
@@ -28,16 +27,6 @@ class _PokemonDetailPageState extends State<PokemonDetailPage> {
         .newTrace('screen_pokemon_detail_${widget.pokemon.name}');
     await _trace.start();
     _trace.setMetric('types_count', widget.pokemon.types.length);
-  }
-
-  Future<void> _simulateLoad() async {
-    // Simulate loading delay
-    await Future.delayed(const Duration(milliseconds: 600));
-    if (mounted) {
-      setState(() {
-        _isLoadingSelect = false;
-      });
-    }
   }
 
   @override
@@ -48,14 +37,22 @@ class _PokemonDetailPageState extends State<PokemonDetailPage> {
 
   @override
   Widget build(BuildContext context) {
+    final pokemon = widget.pokemon;
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.pokemon.name[0].toUpperCase() +
-            widget.pokemon.name.substring(1)),
+        title: Text(
+            '#${pokemon.id.toString().padLeft(3, '0')} ${pokemon.name[0].toUpperCase()}${pokemon.name.substring(1)}'),
       ),
-      body: PokemonDetailCard(
-        pokemon: widget.pokemon,
-        isLoadingSelect: _isLoadingSelect,
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          children: [
+            PokemonMainInfo(pokemon: pokemon),
+            const SizedBox(height: 16),
+            PokemonStatsChart(stats: pokemon.stats),
+          ],
+        ),
       ),
     );
   }
