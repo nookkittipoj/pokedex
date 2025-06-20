@@ -15,7 +15,21 @@ class PokemonStatsChart extends StatelessWidget {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(statName.toUpperCase()),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  statName.toUpperCase(),
+                  textAlign: TextAlign.left,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  value.toString(),
+                  textAlign: TextAlign.right,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
             const SizedBox(height: 4),
             LinearProgressIndicator(
               value: value / 150,

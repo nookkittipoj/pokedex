@@ -21,7 +21,7 @@ class PokemonTypeBadges extends StatelessWidget {
       children: types.map((type) {
         final color = PokemonTypeColor.getColor(type);
         return Container(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+          padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
           decoration: BoxDecoration(
             color: color.withValues(alpha: 0.2),
             borderRadius: BorderRadius.circular(12),
